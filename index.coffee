@@ -1,13 +1,12 @@
 console.log("Initializing...");
 http = require('http')
 exec = require('child_process').exec
-config = {
-  project:{pass: "password", script: "ls", started: "Not Yet",stopped: "Not Yet",output: "Not Yet"}
-}
+config = require('./config');
 
 http.createServer((req, res)->
   url=req.url;req=null;
   res.writeHead(200)
+  res.setHeader("Content-Type", "text/plain; charset=utf-8");
   url=url.split("/",4);
   if((target = config[url[1]])?)
     res.write("Target Name: #{url[1]}\n");
