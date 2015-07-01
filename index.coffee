@@ -5,8 +5,8 @@ config = require('./config');
 
 http.createServer((req, res)->
   url=req.url;req=null;
-  res.writeHead(200)
   res.setHeader("Content-Type", "text/plain; charset=utf-8");
+  res.writeHead(200)
   url=url.split("/",4);
   if((target = config[url[1]])?)
     res.write("Target Name: #{url[1]}\n");
